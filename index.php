@@ -1,4 +1,6 @@
 <?php 
+	session_start();
+	
 	require_once "app/config/autoload.php";
 	require_once "app/config/database.php";
 
@@ -12,16 +14,36 @@
 	if(isset($_GET["page"])) {
 		switch ($_GET["page"]) {
 			case 'contact':
-				# code...
+				if(isset($_SESSION["user"])){
+					$db->logAction("visited contact",$_SESSION["user"]->username,"app");
+				}
+				$pageController->contact();
 				break;
-			case 'author':
-				# code...
+
+			case 'feed':
+				$db->logAction("visited fed",$_SESSION["user"]->username,"app");
+				$pageController->feed();
+				break;
+
+			case 'admin':
+				$db->logAction("visited admin",$_SESSION["user"]->username,"app");
+				$pageController->admin();
 				break;
 			
 			default:
-				$pageController->home();
+				if(isset($_SESSION["user"])) {
+					$db->logAction("visited profile",$_SESSION["user"]->username,"app");
+					$pageController->profile();
+				} else {
+					$pageController->home();
+				}
 				break;
 		}
 	} else {
-		$pageController->home();
+		if(isset($_SESSION["user"])) {
+					$db->logAction("visited profile",$_SESSION["user"]->username,"app");
+					$pageController->profile();
+				} else {
+					$pageController->home();
+				}
 	}

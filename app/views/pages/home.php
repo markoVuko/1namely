@@ -10,23 +10,25 @@
 				<hr>
 			</span>
 
-			<form id="regForm">
-				<input type="text" id="regUser" v-model="regUser" placeholder="username..."><br>
-				<input type="email" id="regGmail" v-model="regGmail" placeholder="email..."><br>
-				<input type="password" id="regPw1" v-model="regPw1" placeholder="password..."><br>
-				<input type="password" id="regPw2" v-model="regPw2" placeholder="confirm password..."><br>
+			<form id="regForm" method="POST" action="app/Controllers/AJAXController.php" onsubmit="return validateReg()">
+				<input type="hidden" name="action" value="register">
+				<input type="text" id="regUser" name="regUser" placeholder="username..."><br>
+				<input type="text" id="regGmail" name="regGmail" placeholder="email..."><br>
+				<input type="password" id="regPw1" name="regPw1" placeholder="password..."><br>
+				<input type="password" id="regPw2" name="regPw2" placeholder="confirm password..."><br>
 				Gender: 
-				<select id="regGender" v-model="regGender">
+				<select id="regGender" name="regGender">
 					<option value="1">Male</option>
 					<option value="2">Female</option>
 					<option value="3">Other</option>
 				</select><br>
-				<input type="submit" id="btnReg" value="Register" v-on:click="checkReg">
+				<input type="submit" id="btnReg" value="Register" >
 			</form>
-			<form id="logForm">
-				<input type="text" id="logUser" v-model="logUser" placeholder="username..."><br>
-				<input type="password" id="logPw" v-model="logPw" placeholder="password..."><br>
-				<input type="submit" id="btnLog" value="Login" v-on:click="checkLog">
+			<form id="logForm" method="POST" action="app/Controllers/AJAXController.php" onsubmit="return validateLog();">
+				<input type="hidden" name="action" value="login">
+				<input type="text" id="logUser" name="logUser" placeholder="username..."><br>
+				<input type="password" id="logPw" name="logPw" placeholder="password..."><br>
+				<input type="submit" id="btnLog" value="Login" >
 			</form>
 		</div>
 		<img src="app/assets/img/worldmap.png" id="map">

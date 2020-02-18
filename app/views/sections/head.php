@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>namely - welcome</title>
+	<title>namely</title>
+	<meta charset="UTF-8">
+	<link rel="icon" href="app/assets/img/favicon.png">
 	<link rel="stylesheet" type="text/css" href="app/assets/css/style.css">
 	<script type="text/javascript" src="app/assets/js/main.js"></script>
 	<script type="text/javascript" src="app/assets/js/scroll.js"></script>

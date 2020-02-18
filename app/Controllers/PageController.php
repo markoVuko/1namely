@@ -16,4 +16,13 @@
 	    public function author() {
 	    	$this->view("author");
 	    }
+	    public function profile() {
+	    	$this->view("profile");
+	    }
+	    public function feed() {
+	    	$this->view("feed");
+	    }
+	    public function admin() {
+	    	$this->view("admin");
+	    }
 	}

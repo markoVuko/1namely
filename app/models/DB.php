@@ -38,4 +38,25 @@ class DB {
         $prepare->execute($params);
         return $prepare->fetchAll();
     }
+
+    public function logAction($p,$user,$path){
+       $open = fopen($path."/data/log.txt", "a");
+        if($open){
+            $date = date('d-m-Y H:i:s');
+            $str=basename($p."\t".$date."\t".$user."\t\n");
+            fwrite($open, $str);
+            fclose($open);
+        }
+        
+    }
+
+    public function logError($where, $code,$path){
+            $file = fopen($path."/data/dberrors.txt", "a");
+            $str = basename($where) . "\t" . date("d.m.Y H:i:s")  . "\t" . $code . "\n";
+
+            fwrite($file, $str);
+            fclose($file);
+
+            http_response_code($code);
+        }
 }
